@@ -23,13 +23,13 @@ module.exports = {
   networks: {
     development: {
       host: "127.0.0.1",
-      port: 7545,
-      network_id: "*" // Match any network id
+      port: 8545,
+      network_id: "*" // Match any network   0x2041002292def703cb34a9aef6d57b0bb8e0ae41
     }
   },
     rinkeby: {
     provider: function() { 
-      return new HDWalletProvider(mnemonic, 'https://rinkeby.etherscan.io/address/0x56e15c5f936a9839fdf14351b37588a93d97b0d6') 
+      return new HDWalletProvider(mnemonic, 'https://rinkeby.etherscan.io/address/0x2041002292def703cb34a9aef6d57b0bb8e0ae41') 
     },
     network_id: '1',
     gas: 4500000,
