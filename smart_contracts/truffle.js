@@ -29,7 +29,7 @@ module.exports = {
   },
     rinkeby : {
     provider: function() { 
-      return new HDWalletProvider(mnemonic, 'https://rinkeby.etherscan.io/address/0x61a39ab28f33929bdb8248153db751b5ad1cb418') 
+      return new HDWalletProvider(mnemonic, 'https://rinkeby.etherscan.io/address/0x1a1db34776c5f046fbda079874375e50af33f3bc') 
     },
     network_id: '1',
     gas: 4500000,

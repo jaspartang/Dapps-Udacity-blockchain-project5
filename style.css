@@ -1,6 +1,7 @@
 body {
     background-color:#F0F0F0;
-    padding: 2em;
+    padding: 0px;
+    margin: 0px;
     font-family: 'Raleway','Source Sans Pro', 'Arial';
 }
 .container {
@@ -12,9 +13,35 @@ body {
 }
 .row {
     margin-bottom:10px;
+    text-align: center;
 }
 button {
     margin: 2em 0;
     padding: 1em 4em;
     display:block;
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    text-decoration:none;
+    cursor: pointer;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+button:hover{
+    background: white;
+    color: red;
+}
+.card{
+    background: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+h1{
+    text-align: center;
+}
+input{
+    
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }

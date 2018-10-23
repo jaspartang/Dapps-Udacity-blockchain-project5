@@ -11,18 +11,37 @@
 
     <body>
         <div class="container">
-            <h1>Star Notary</h1>
-
-            <div class="row">
+            <h1>Star Notary DAPP</h1>
+          <div class="card">
+            <div class="row" style="padding-top: 30px;">
                 <label class="bold">Star Name:</label>
-                <label id="star-name"></label>
+                <br>
+                <input id="starName">
             </div>
-
             <div class="row">
-                <label class="bold">Star Owner:</label>
-                <label id="star-owner"></label>
+              <label class="bold">Star Story:</label>
+              <br>
+              <input id="starStory">
             </div>
-            <button id="claim-button" onclick="claimButtonClicked()">Claim Star</button>
+            <div class="row">
+                <label class="bold" id="star_ra">_ra:</label>
+                <br>
+                <input>
+            </div>
+            <div class="row">
+              <label class="bold">_dec     :</label>
+              <br>
+              <input id="star_dec">
+            </div>
+            <div class="row">
+              <label class="bold">_mag     :</label>
+              <br>
+              <input id="star_mag">
+             </div>
+             <div class="row" style="padding-bottom: 30px;">
+              <button id="claim-button" onclick="claimButtonClicked()">Create Star</button>
+             </div>
+            </div>
         </div>
 
         <script>    
@@ -494,7 +513,7 @@
   ]
             );
             // Grab the contract at specified deployed address with the interface defined by the ABI
-            var starNotary = StarNotary.at('0x61a39ab28f33929bdb8248153db751b5ad1cb418');
+            var starNotary = StarNotary.at('0x1a1db34776c5f046fbda079874375e50af33f3bc');
             
             // // Get and display star name
             // starNotary.starName(function (error, result) {
@@ -522,14 +541,22 @@
                         console.log(error)
                         return
                     }
+                    let name = document.getElementById('starName').value;
+                    let story = document.getElementById('starStory').value;
+                    let _dec = document.getElementById('star_dec').value;
+                    let _mag = document.getElementById('star_mag').value;
+                    let _ra  = document.getElementById('star_ra').value;
                     var account = accounts[0]
                     console.log(accounts);
-                    web3.eth.sendTransaction(["Star","my udacity star","ra_032.155", "dec_121.874","mag_245.978",1],{from:account},function(e,result){
-                        if(e){
-                            console.log(e);
-                        }
-                        console.log(result);
-            });
+                    web3.eth.sendTransaction([name, story, _ra, _dec, _mag,6], {from:account}, 
+                        function (error, result){ 
+                            if (error){
+                              console.log(error);
+                            }
+                            else{
+                              console.log(result);
+                            }
+                        })
                     // starNotary.claimStar(function (error, result) {
                     //     if (!error) {
                     //         var starClaimedEvent = starNotary.starClaimed({from: account});
