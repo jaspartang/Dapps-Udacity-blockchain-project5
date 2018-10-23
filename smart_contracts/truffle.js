@@ -12,7 +12,7 @@
  *   },
  */
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const mnemonic = "lemon sad chapter dolphin dawn vanish feel giraffe unaware canal crane rely";
+const mnemonic = "lemon sad chapter dolphin dawn vanish feel giraffe unaware canal crane rely  in india";
 // module.exports = {
 //   // See <http://truffleframework.com/docs/advanced/configuration>
 //   // to customize your Truffle configuration!
@@ -27,9 +27,9 @@ module.exports = {
       network_id: "*" // Match any network   0x2041002292def703cb34a9aef6d57b0bb8e0ae41
     }
   },
-    rinkeby: {
+    rinkeby : {
     provider: function() { 
-      return new HDWalletProvider(mnemonic, 'https://rinkeby.etherscan.io/address/0x2041002292def703cb34a9aef6d57b0bb8e0ae41') 
+      return new HDWalletProvider(mnemonic, 'https://rinkeby.etherscan.io/address/0x61a39ab28f33929bdb8248153db751b5ad1cb418') 
     },
     network_id: '1',
     gas: 4500000,
