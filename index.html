@@ -13,34 +13,58 @@
         <div class="container">
             <h1>Star Notary DAPP</h1>
           <div class="card">
-            <div class="row" style="padding-top: 30px;">
-                <label class="bold">Star Name:</label>
-                <br>
-                <input id="starName">
+            <div class="card-equal">
+
+                <div class="row" style="padding-top: 30px;">
+                    <label class="bold">TOKEND ID :</label>
+                    <br>
+                    <input id="showStar">
+                </div>
+                <div class="row" style="padding-bottom: 30px;">
+                    <button id="claim-button" onclick="showStar()">Show Star  >></button>
+                </div>
             </div>
-            <div class="row">
-              <label class="bold">Star Story:</label>
-              <br>
-              <input id="starStory">
+            <div class="card-equal">
+                <div class="row" style="padding-top: 30px;">
+                    <label class="bold">Star Name:</label>
+                    <br>
+                    <input id="starName">
+                </div>
+                <div class="row">
+                  <label class="bold">Star Story:</label>
+                  <br>
+                  <input id="starStory">
+                </div>
+                <div class="row">
+                    <label class="bold" id="star_ra">_ra:</label>
+                    <br>
+                    <input>
+                </div>
+                <div class="row">
+                  <label class="bold">_dec     :</label>
+                  <br>
+                  <input id="star_dec">
+                </div>
+                <div class="row">
+                  <label class="bold">_mag     :</label>
+                  <br>
+                  <input id="star_mag">
+                 </div>
+                 <div class="row">
+                    <label class="bold">TOKEND ID :</label>
+                    <br>
+                    <input id="tokenid">
+                </div>
+                 <div class="row" style="padding-bottom: 30px;">
+                  <button id="claim-button" onclick="claimButtonClicked()">Create Star</button>
+                 </div>
             </div>
-            <div class="row">
-                <label class="bold" id="star_ra">_ra:</label>
-                <br>
-                <input>
+            <div class="card-equal">
+                <div class="row" style="padding-top: 30px;">
+                    <label class="bold"> RESULT:</label>
+                    <br>
+                </div>
             </div>
-            <div class="row">
-              <label class="bold">_dec     :</label>
-              <br>
-              <input id="star_dec">
-            </div>
-            <div class="row">
-              <label class="bold">_mag     :</label>
-              <br>
-              <input id="star_mag">
-             </div>
-             <div class="row" style="padding-bottom: 30px;">
-              <button id="claim-button" onclick="claimButtonClicked()">Create Star</button>
-             </div>
             </div>
         </div>
 
@@ -537,7 +561,7 @@
             function claimButtonClicked() { 
                 web3.eth.getAccounts(function(error, accounts) { 
                     if (error) { 
-                        debugger;
+                        alert(error);
                         console.log(error)
                         return
                     }
@@ -546,32 +570,38 @@
                     let _dec = document.getElementById('star_dec').value;
                     let _mag = document.getElementById('star_mag').value;
                     let _ra  = document.getElementById('star_ra').value;
+                    let token_id = document.getElementById('tokenid').value;
                     var account = accounts[0]
                     console.log(accounts);
-                    web3.eth.sendTransaction([name, story, _ra, _dec, _mag,6], {from:account}, 
+                    web3.eth.sendTransaction([name, story, _ra, _dec, _mag,token_id], {from:account}, 
                         function (error, result){ 
                             if (error){
                               console.log(error);
                             }
                             else{
+                              alert(result);
                               console.log(result);
                             }
-                        })
-                    // starNotary.claimStar(function (error, result) {
-                    //     if (!error) {
-                    //         var starClaimedEvent = starNotary.starClaimed({from: account});
-                    //         starClaimedEvent.watch(function(error, result) {
-                    //             if (!error) {
-                    //                 location.reload();
-                    //             } else {
-                    //                 console.log('watching for star claimed event is failing');
-                    //             }
-                    //         });
-                    //     } else { 
-                    //         console.log(error);
-                    //     }
-                    // });
-                   
+                        })     
+                })
+            }
+            function showStar() {
+              web3.eth.getAccounts(function(error, result){
+                    if (error) {
+                        alert(error);
+                        return;
+                    }
+                    let account = result[0]
+                    let _id = document.getElementById("showStar").value
+                    
+                    starNotary.tokenIdToStarInfo.call(_id, function(error, result) {
+                        if (!error) {
+                            alert(result)
+                          console.log(result);
+                        } else {
+                            alert(error)
+                        }
+                    })
                 })
             }
         </script>
